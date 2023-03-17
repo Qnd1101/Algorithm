@@ -1,1 +1,1 @@
-# BaekJoon_Java
+# Java 언어를 사용하여 백준 문제를 풀었다

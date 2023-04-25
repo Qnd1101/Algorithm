@@ -2,5 +2,5 @@
 SELECT ANIMAL_ID,	NAME
 FROM ANIMAL_INS
 WHERE animal_type = 'Dog' 
-and LOWER(NAME) LIKE '%el%' 
+and upper(NAME) LIKE '%EL%' 
 ORDER BY NAME ASC;

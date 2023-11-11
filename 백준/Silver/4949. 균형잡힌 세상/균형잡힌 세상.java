@@ -15,23 +15,45 @@ public class Main {
             MinStack stack = new MinStack(); // 스택 구현.
             String[] strArr = inputStr.split("");
 
+//            for(String str : strArr){
+//                if(str.equals("(")){
+//                    stack.push("(");
+//                }else if(str.equals("[")){
+//                    stack.push("[");
+//                }else if(str.equals(")")){
+//                    if (stack.peek().equals("(")) {
+//                        stack.pop();
+//                    } else {
+//                        stack.push(")");
+//                    }
+//                }else if(str.equals("]")){
+//                    if (stack.peek().equals("[")) {
+//                        stack.pop();
+//                    }else {
+//                        stack.push("]");
+//                    }
+//                }
+//            }
             for(String str : strArr){
-                if(str.equals("(")){
-                    stack.push("(");
-                }else if(str.equals("[")){
-                    stack.push("[");
-                }else if(str.equals(")")){
-                    if (stack.peek().equals("(")) {
-                        stack.pop();
-                    } else {
-                        stack.push(")");
-                    }
-                }else if(str.equals("]")){
-                    if (stack.peek().equals("[")) {
-                        stack.pop();
-                    }else {
-                        stack.push("]");
-                    }
+                switch (str){
+                    case "(" :
+                    case "[" :
+                        stack.push(str);
+                        break;
+                    case ")" :
+                        if(stack.peek().equals("(")){ // 가장 위에 있는 문자가 "(" 인 경우엔 pop() 메서드를 호출하고?
+                            stack.pop();
+                        }else { // 아니면 push() 메서드를 호출한다.
+                            stack.push(str);
+                        }
+                        break;
+                    case "]" :
+                        if(stack.peek().equals("[")){ // 가장 위에 있는 문자가 "[" 인 경우엔 pop() 메서드를 호출하고?
+                            stack.pop();
+                        }else { // 아니면 push() 메서드를 호출한다.
+                            stack.push(str);
+                        }
+                        break;
                 }
             }
 
@@ -62,7 +84,7 @@ class MinStack {
     // 스택에서 값을 제거하는 메서드
     public void pop() {
         if (!isEmpty()) {
-            stack.remove(top);
+            stack.remove(top); // 가장 위에 있는 문자 삭제
             top--;
         }
     }
@@ -74,9 +96,9 @@ class MinStack {
 
     // 스택의 맨 위의 값을 확인하는 메서드
     public String peek() {
-        if (!isEmpty()) {
-            return stack.get(top);
+        if (!isEmpty()) { // 스택이 존재 한다면?
+            return stack.get(top); // 가장 위에 있는 값을 반환
         }
-        return "";
+        return ""; // 존재하지 않을 시에는 공백을 반환
     }
 }
